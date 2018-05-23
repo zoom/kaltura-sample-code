@@ -1,0 +1,206 @@
+<!-- /* Copyright (c) 2018 Zoom Video Communications, Inc., All Rights Reserved */ -->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Zoom Kaltura Connector</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" th:href="@{/css/main.css}"
+	href="../../css/main.css" />
+</head>
+<body>
+
+<!-- success message -->
+<div class="pop-message pop-message-success">
+	<div class="message">
+		Credentials submitted
+	</div>
+</div>
+
+
+
+
+<!-- fail message -->
+<div class="pop-message pop-message-fail">
+	<div class="message">
+		Credentials submitted
+	</div>
+</div>
+
+
+
+<div class="mask-intruduce" id="intruduce">
+
+	<div class="content">
+		<img th:src="@{/imgs/close.png}" class="close" data-aim="#intruduce" alt="close" />
+		<div class="title">Guidance</div>
+		<div class="tell">
+Kaltura integration with Zoom allows you to automatically upload your Zoom cloud recordings to Kaltura after your meeting ends.
+		</div>
+		<div>
+			<div class="subtitle">Prerequisites</div>
+			<ul>
+					<li> A Paid Zoom Account</li>
+					<li> Access to Zoom Cloud Recording / Your Zoom account must have permission to access recordings.</li>
+					<li>Kaltura Publisher Administrator Account.</li>
+			</ul>
+		</div>
+
+		<div>
+			<div class="subtitle">Instructions</div>
+			<ol>
+					<li> Login to the Zoom MarketPlace.</li>
+					<li> Discover Kaltura Connector.</li>
+					<li>Now click on Authorize. </li>
+					<li>Authorize the following scopes the Kaltura Connector uses.
+							<ul style="list-style-type: disc;">
+								<li>View and manage your user information</li>
+								<li>View your user information</li>
+								<li>View your recordings</li>
+							</ul>
+					</li>
+					<li>Now you will be redirected to the Kaltura configuration Page. </li>
+			</ol>
+		</div>
+
+	</div>
+
+
+</div>
+
+
+	<!-- head  -->
+	<nav class="navbar welcome-navbar">
+		<div class="container">
+			<div class="navbar-header pull-left">
+				<a class="navbar-brand" href="#">
+					<img th:src="@{/imgs/ZoomLogo.png}" alt="logo"/>
+				</a>
+			</div>
+			<div id="navbar" class="navbar-collapse pull-right">
+				<ul class="nav navbar-nav">
+					<li id="openGuidance" ><a style="cursor:pointer">Guidance&nbsp;</a></li>
+					<li ><a href="#" id="userIdMsg"></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- head end -->
+
+
+	<div class="container welcome-container">
+
+
+
+
+
+		<div class="row">
+
+			<!-- log and title -->
+			<div class="starter-template">
+				<div class="figure">
+					<img th:src="@{/imgs/logo.png}" alt="logo"/>
+				</div>
+				<h1 class="title">Kaltura Integration</h1>
+				<div class="run-tip">
+					If you do not have zoom recording permissions, you must use your Zoom email Id as your folder ID.
+				</div>
+			</div>
+			<!-- logo and title end -->
+
+			<form class="form-horizontal" id="adminform" data-submit=".submit">
+				<div class="form-group">
+					<label for="username">Uploader User Name</label>
+					<input data-validate="required" name = "username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Uploader User Name"/>
+					<span class="error-notice"></span>
+				</div>
+				<div class="form-group">
+					<label for="adminUserid">Zoom Email Id</label>
+					<input data-validate="required" name = "userid" class="form-control" id="adminUserid" aria-describedby="emailHelp" placeholder="Enter Zoom Email Id"/>
+					<span class="error-notice"></span>
+				</div>
+				<div class="form-group">
+					<label for="partnerid">Kaltura Partner Id</label>
+					<input  data-validate="required" name="partnerid" class="form-control" id="partnerid" placeholder="Kaltura Partner Id"/>
+					<span class="error-notice"></span>
+				</div>
+				<div class="form-group">
+					<label for="administratorsecret">Kaltura Administrator Secret</label>
+					<input data-validate="required" name="adminsecret"  class="form-control" id="administratorsecret" placeholder="Kaltura Administrator Secret"/>
+					<span class="error-notice"></span>
+				</div>
+
+
+				<div class="form-check">
+					<input name="enableupload" type="checkbox" class="form-check-input" id="enableupload"/>
+
+					<label class="form-check-label checkbox-label" for="enableupload">Enable Upload</label>
+				</div>
+				<div class="form-check">
+					<input name="category" type="checkbox" class="form-check-input" id="category"/>
+
+					<!-- <input name="category" type="checkbox" class="form-check-input" id="category"/> -->
+					<label class="form-check-label checkbox-label" for="category">Category For Zoom</label>
+				</div>
+				<br/>
+				<button type="button" class="btn btn-primary submit" id="panoptosubmit">Submit </button>
+			</form>
+
+
+
+			<form class="form-horizontal" id="userform" data-submit=".submit">
+				<div class="form-group">
+					<label for="userid">User ID</label>
+					<input data-validate="required" name = "userConfigId" class="form-control" id="userid" aria-describedby="emailHelp" placeholder="Enter User Id(Zoom Email id)"/>
+					<span class="error-notice"></span>
+				</div>
+				<button type="button" class="btn btn-primary submit" id="kalturaUser">Submit </button>
+			</form>
+
+		</div>
+
+	</div>
+
+
+
+	<!-- /.container -->
+	<script type="text/javascript"
+	src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript"
+	src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+	src="../../js/load.js"></script>
+
+	<script type="text/javascript" th:inline="javascript">
+	/*<![CDATA[*/
+
+	$(document).ready(function() {
+        var username  = [[${userName}]];
+        var uToken  = [[${token}]];
+		if(uToken ) {
+		    localStorage.username = username;
+			localStorage.token = uToken;
+			localStorage.isAdmin = [[${isAdmin}]];
+			showHideForm(JSON.parse(localStorage.isAdmin), !JSON.parse(localStorage.isAdmin));
+		}
+
+		//store it in the local storage
+	});
+    setTimeout(function(){
+        var path=location.pathname.trim();
+        if(path===''||path==='/'){
+            return;
+        }
+        var url=location.protocol+"//"+location.hostname+":"+location.port;
+        location.assign(url);
+    }, 300);
+
+	/*]]>*/
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+
+/* Copyright (c) 2018 Zoom Video Communications, Inc., All Rights Reserved */
+
+body{
+  font-family: OpenSans -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+
+.welcome-navbar{
+  $hg:72px;
+  margin-bottom:0px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  a{
+    height:$hg !important;
+    line-height:$hg !important;
+    padding:0px !important;
+    //overwrite
+    &:hover{
+      background-color:transparent !important;
+    }
+    &:focus{
+      background-color:transparent !important;
+    }
+    &:active{
+      background-color:transparent !important;
+    }
+    //overwrite end
+  }
+
+
+  .navbar-header{
+    font-weight:bold;
+
+    a{
+      color:#2e8cff;
+      font-size:1.3em;
+
+    }
+
+  }
+  .navbar-nav{
+    font-size:13px;
+    color:black;
+    a{
+      color:#232333;
+      font-weight:bold;
+      cursor:auto;
+    }
+  }
+}
+
+
+
+.welcome-container{
+  position:relative;
+
+  //pop style
+  .pop-message{
+    position:absolute;
+    top:6px;
+    left:50%;
+    transform:translate(-50%,0px);
+    width:100%;
+    text-align:center;
+    .message{
+      display:inline-block;
+      padding:9px 83px;
+    }
+  }
+
+  .pop-message-success{
+    color: #207824;
+    .message{
+      background:#d0f0dd;
+    }
+  }
+  .pop-message-fail{
+    color: #cc3535;
+    .message{
+      background: #ffeded;
+    }
+  }
+
+  //pop style end
+
+  padding-bottom:30px;
+  width:600px;
+  margin-left:auto;
+  margin-right:auto;
+
+  .starter-template{
+    margin-top:45px;
+    text-align:center;
+    .figure{
+      width:64px;
+      height:64px;
+      border-radius: 20.6px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.13);
+      overflow:hidden;
+      margin-left:auto;
+      margin-right:auto;
+      text-align:center;
+    }
+    img{
+      vertical-align:middle;
+      height:100%;
+      padding:4px;
+    }
+
+  }
+
+  .title{
+    font-size:20px;
+    text-align:center;
+    margin-top:22px;
+    margin-bottom:21px;
+    font-weight: bold;
+
+    color: #232333;
+  }
+
+  label{
+    font-size:13px;
+    font-weight: bold;
+    letter-spacing: normal;
+    text-align: left;
+    color: #232333;
+    margin-bottom:7px;
+  }
+
+  .form-group{
+    margin-left:0px;
+    margin-right:0px;
+
+    .error-notice{
+      color: #d84b44;
+      display:inline-block;
+      padding-top:6px;
+      font-size:12px;
+    }
+  }
+
+  .form-check{
+    display:inline-block;
+    margin-right:50px;
+    margin-bottom:16px;
+    &:after{
+      content:" ";
+      display:block;
+      clear:both;
+    }
+  }
+
+
+  button{
+    height:32px;
+    line-height:30px;
+    vertical-align:middle;
+    padding:0px 9px;
+    margin:0px;
+    border-radius:3px;
+    background-color: #2e8cff;
+    border-width:0px;
+    &:hover{
+      background-color: #5fa7ff;
+      border-width:0px;
+    }
+    &:active{
+      background:#1d79ea !important;
+      background-image: none !important;
+      outline: 0 !important;
+      box-shadow: none !important;
+      border-width:0px;
+    }
+    &:focus{
+      background-color:#1d79ea;
+      background-image: none !important;
+      outline: 0 !important;
+      box-shadow: none !important;
+      border-width:0px;
+    }
+  }
+
+
+
+  //checkbox style
+
+  $wd:15px;
+  $color:#2e8cff;
+  input[type="checkbox"]{
+    transform:translate(0px,3px);
+  }
+
+  input[type="checkbox"]:focus{
+    outline:0;
+  }
+
+  input[type="checkbox"]:before{
+    position: relative;
+    display: block;
+    width: $wd;
+    height: $wd;
+    content: "";
+    background: transparent;
+    border-radius:6px;
+  }
+
+
+  input[type="checkbox"]:after{
+    position: relative;
+    display: block;
+    left: -2px;
+    top: -17px;
+    width: $wd;
+    height: $wd ;
+    content: "";
+    background-image: linear-gradient(white,white,white);
+    border:1px solid #babacc;
+    background-repeat: no-repeat;
+    background-position:center;
+    border-radius:6px;
+  }
+
+
+  input[type="checkbox"]:checked:after{
+    background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAiUlEQVQ4T+WSUQ3DMBBDn5kUwiAMQiEMQiEMUqEMwiCUgaeTEilpkylS/9r7jOInn8/i5OiknrsBbD+ASdKasxvOIIlDOEv6NAG2J2CTtJXX6YnjT+XA9gy8gWeG/BMfAPFg+wUsAYl9gYPt0l0zgwQJJzHVzvvidUNM63zLwFqtHb5Cr/IXAPwAQRItESIbQsQAAAAASUVORK5CYII='), linear-gradient($color, $color,$color);
+
+  }
+
+
+  input[type="checkbox"]:disabled:after{
+    -webkit-filter: opacity(0.4);
+  }
+  input[type="checkbox"]:active{
+    border-width:0px;
+    outline-width:0px;
+  }
+  .myinput[type="checkbox"]:not(:disabled):checked:hover:after{
+
+  }
+
+  //checkbox style end
+
+}

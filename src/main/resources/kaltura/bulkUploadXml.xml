@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<mrss xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ingestion.xsd">
+	<channel>
+		<item>
+			<action>add</action>
+			<type>1</type>
+			<userId>example</userId>
+			<name>Home</name>
+			<!--<description></description> -->
+			<tags>
+				<tag>Zoom</tag>
+			</tags>
+			<categories>
+				<category>Zoom Recordings</category>
+			</categories>
+			<!-- <accessControlId>...</accessControlId> -->
+			<!-- <conversionProfileId>...</conversionProfileId> -->
+			<!--<startDate>2011-09-01T09:00:00</startDate>-->
+			<!--<endDate>2012-09-01T09:00:00</endDate>-->
+			<media>
+				<mediaType>1</mediaType> 
+			</media>
+			<contentAssets>
+				<content>
+					<urlContentResource url="https://www.zoom.us/recording/download/JzYRm6EvX0WSB8SXnb13eO8Yv4yArBuZS1p7-7EbklfIpWnFHzLNUwoFLJ1gBvQB"/>
+				</content>
+			</contentAssets>
+			<!-- <thumbnails>...</thumbnails> -->
+			<!-- <scenes>..</scenes> -->
+			<!-- <customDataItems>...</customDataItems>  -->
+			<!-- <distribution>...</distribution>  -->
+		</item>
+				
+	</channel>
+</mrss>

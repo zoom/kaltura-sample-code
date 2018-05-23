@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="us.zoom.cms.mapper.KalturaMapper">
+    <resultMap type="us.zoom.cms.domain.KalturaConfiguration" id="addKalturaConfiguration">
+        <result property="zoomAccountId" column="zoomaccountid" />
+        <result property="userName" column="username" />
+        <result property="userId" column="userid" />
+        <result property="partnerId" column="partnerid" />
+        <result property="administratorSecret" column="administratorsecret" />
+        <result property="enableUpload" column="enableuploadrecording" />
+        <result property="categoryByZoomRecording" column="categorybyzoomrecording" />
+        <result property="creationTime" column="creation_time" />
+    </resultMap>
+
+    <resultMap type="us.zoom.cms.domain.UserKalturaConfig" id="addUserKalturaConfig">
+        <result property="accountId" column="accountid" />
+        <result property="userId" column="userid" />
+        <result property="userConfigId" column="userconfigid" />
+        <result property="creationTime" column="creation_time" />
+    </resultMap>
+
+
+    <sql id="Select_Column_List" >
+        zoomaccountid,
+        userid,
+        username,
+        partnerid,
+        administratorsecret,
+        enableuploadrecording,
+        categorybyzoomrecording,
+        creation_time,
+        modification_time
+    </sql>
+
+    <sql id="Select_User_Column_List" >
+        accountid,
+        userid,
+        userconfigid,
+        creation_time,
+        modification_time
+
+</sql>
+
+
+    <insert id="saveKaltura" useGeneratedKeys="true"  keyProperty="id"  keyColumn="zoomaccountid" >
+        INSERT INTO zm_kaltura_configuration (
+        <include refid="Select_Column_List" />
+        )
+        VALUES (
+        #{zoomAccountId},
+        #{userId},
+        #{userName},
+        #{partnerId},
+        #{administratorSecret},
+        #{enableUpload},
+        #{categoryByZoomRecording},
+        NOW(),
+        NOW()
+        )
+    </insert>
+
+    <update id="updateKalturaConfiguration" >
+        UPDATE zm_kaltura_configuration
+        SET
+        userid = #{userId},
+        username = #{userName},
+        enableuploadrecording = #{enableUpload},
+        partnerid = #{partnerId},
+        administratorsecret = #{administratorSecret},
+        categorybyzoomrecording = #{categoryByZoomRecording}
+        WHERE zoomaccountid = #{zoomAccountId}
+        LIMIT	1
+    </update>
+
+
+    <select id="fetchKalturaConfiguration" resultMap="addKalturaConfiguration">
+        select
+        <include refid="Select_Column_List" />
+        from zm_kaltura_configuration
+        where zoomaccountid = #{zoomAccountId};
+    </select>
+
+    <insert id="saveUserKaltura" useGeneratedKeys="true"  keyProperty="id"  keyColumn="userid" >
+        INSERT INTO zm_kaltura_user_configuration (
+        <include refid="Select_User_Column_List" />
+        )
+        VALUES (
+        #{accountId},
+        #{userId},
+        #{userConfigId},
+        NOW(),
+        NOW()
+        )
+    </insert>
+
+
+    <update id="updateUserKaltura" >
+        UPDATE zm_kaltura_user_configuration
+        SET
+        userconfigid = #{userConfigId}
+        WHERE   userid = #{userId}
+        LIMIT	1
+    </update>
+
+    <select id="fetchUserKalturaConfiguration" resultMap="addUserKalturaConfig">
+        select
+        <include refid="Select_User_Column_List" />
+        from zm_kaltura_user_configuration
+        where userid = #{userId};
+    </select>
+</mapper>
